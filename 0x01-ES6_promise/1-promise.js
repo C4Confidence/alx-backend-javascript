@@ -1,4 +1,4 @@
-//1-promise.js
+// Promises upon promises
 function getFullResponseFromAPI(success) {
     return new Promise((resolve, reject) => {
       if (success) {
