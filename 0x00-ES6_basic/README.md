@@ -1,0 +1,1 @@
+Readme for JavaScript ES6, The basics tho.
