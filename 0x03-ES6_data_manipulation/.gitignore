@@ -1,0 +1,6 @@
+*main.js
+node_modules
+*.
+babel.config.js
+package-lock.json
+package.json
