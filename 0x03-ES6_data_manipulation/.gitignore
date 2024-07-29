@@ -1,3 +1,5 @@
+// Kindly ignore the following: 
+
 .eslintrc.js
 *main.js
 node_modules
