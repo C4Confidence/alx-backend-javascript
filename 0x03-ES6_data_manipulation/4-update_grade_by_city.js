@@ -1,22 +1,17 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-prototype-builtins */
 export default function updateStudentGradeByCity(list, city, newGrade) {
-  return list
-    .filter((obj) => obj.location === city)
-    .map((student) => {
-      //   console.log(newGrade);
-      newGrade.map((studentGrade) => {
-        if (studentGrade.studentId === student.id) {
-          // eslint-disable-next-line no-param-reassign
-          student.grade = studentGrade.grade;
-        }
-
-        if (!student.hasOwnProperty('grade')) {
-          student.grade = 'N/A';
-        }
-        return student;
+    return list
+      .filter((obj) => obj.location === city)
+      .map((student) => {
+        // Find the grade object for the current student
+        const gradeObj = newGrade.find((studentGrade) => studentGrade.studentId === student.id);
+        
+        // Create a new student object with the updated grade
+        const updatedStudent = {
+          ...student,
+          grade: gradeObj ? gradeObj.grade : 'N/A',
+        };
+  
+        return updatedStudent;
       });
-
-      return student;
-    });
-}
+  }
+  
