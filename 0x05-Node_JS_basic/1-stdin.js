@@ -8,7 +8,10 @@ process.stdin.on('data', (data) => {
   const name = data.toString().trim(); // Convert buffer to string
   process.stdout.write(`Your name is: ${name}\n`);
 
-  // End program with closing message
-  process.stdout.write('This important software is now closing\n');
+  // Check if input is piped (e.g., from echo)
+  if (!process.stdin.isTTY) {
+    process.stdout.write('This important software is now closing\n');
+  }
+
   process.exit(); // Exit the program
 });
