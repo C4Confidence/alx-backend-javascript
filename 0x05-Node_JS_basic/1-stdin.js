@@ -12,4 +12,3 @@ process.stdin.on('data', (data) => {
   process.stdout.write('This important software is now closing\n');
   process.exit(); // Exit the program
 });
-
