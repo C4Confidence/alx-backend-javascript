@@ -1,17 +1,16 @@
-#!/usr/bin/node
-
-// Display the message and prompt
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Listen for data from the user
-process.stdin.on('data', (data) => {
-  const name = data.toString().trim(); // Convert buffer to string
-  process.stdout.write(`Your name is: ${name}\n`);
-
-  // Check if input is piped (e.g., from echo)
-  if (!process.stdin.isTTY) {
+if (process.stdin.isTTY) {
+  process.stdin.on('data', (data) => {
+    process.stdout.write(`Your name is: ${data.toString()}`);
+    process.exit();
+  });
+} else {
+  process.stdin.on('data', (data) => {
+    process.stdout.write(`Your name is: ${data.toString()}`);
+    process.exit();
+  });
+  process.on('exit', () => {
     process.stdout.write('This important software is now closing\n');
-  }
-
-  process.exit(); // Exit the program
-});
+  });
+}
